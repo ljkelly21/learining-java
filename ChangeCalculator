@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class exercises {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter a dollar amount : ");
+		Double amount = input.nextDouble();
+		int remainingAmount = (int)(amount * 100);
+		int dollars = remainingAmount / 100;
+		remainingAmount = remainingAmount % 100;
+		int quarters = remainingAmount / 25;
+		remainingAmount = remainingAmount % 25;
+		int dimes = remainingAmount / 10;
+		remainingAmount = remainingAmount % 10;
+		int nickels = remainingAmount / 5;
+		remainingAmount = remainingAmount % 5;
+		int pennies = remainingAmount;
+		System.out.println(amount + " has : ");
+		System.out.println(dollars + " dollars");
+		System.out.println(quarters + " quarters");
+		System.out.println(dimes + " dimes");
+		System.out.println(nickels + " nickels");
+		System.out.println(pennies + " pennies");
+	}
+}
