@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class exercises {
+
+	public static void main(String[] args) {
+		System.out.println("American Time Calculator");
+		System.out.println("--------------------------");
+		System.out.println();
+		Scanner timezone = new Scanner(System.in);
+		long totalMilliseconds = System.currentTimeMillis();
+		long totalSeconds = totalMilliseconds / 1000;
+		long currentSeconds = totalSeconds % 60;
+		long totalMinutes = totalSeconds / 60;
+		long totalHours = totalMinutes / 60;
+		long currentMinutes = (totalMinutes % 60);
+		long currentHours = totalHours % 24;
+		System.out.println("What time zone are you in?");
+		System.out.println("Enter E for Eastern, C for Central, MD for Mountain Daylight, MS for Mountain Standard or P for Pacific.");
+		String timeZone = timezone.next();
+		int timezonefactor = 0;
+		if (timeZone.endsWith("E")) {
+			timezonefactor = 8;
+		} else if (timeZone.endsWith("C")) {
+			timezonefactor = 7;
+		} else if (timeZone.endsWith("MD")) {
+			timezonefactor = 6;
+		} else if (timeZone.endsWith("MS")) {
+			timezonefactor = 5;
+		} else if (timeZone.endsWith("P")) {
+			timezonefactor = 4;
+		} else {
+			timezonefactor = 0;
+			System.out.println("Displayed time is incorrect, valid timezone not entered");
+		}
+		System.out.println("The time is " + (currentHours + timezonefactor) + ":" + currentMinutes + ":" + currentSeconds);
+	}
+}
