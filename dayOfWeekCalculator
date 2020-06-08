@@ -12,6 +12,14 @@ public class exercises {
 		int month = monthscanner.nextInt();
 		System.out.println("Enter the day of the month (1-31) :");
 		int dayofmonth = dayofmonthscanner.nextInt();
+		if (month == 1) {
+			month = 13;
+			year -= 1;
+		}
+		else if (month == 2) {
+			month = 14;
+			year -= 1;
+		}
 		int eq1 = dayofmonth;
 		double eq2 = ((26 * (month + 1))/10);
 		int eq3 = year % 100;
