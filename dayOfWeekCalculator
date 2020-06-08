@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class exercises {
+
+	public static void main(String[] args) {
+		Scanner yearscanner = new Scanner(System.in);
+		Scanner monthscanner = new Scanner(System.in);
+		Scanner dayofmonthscanner = new Scanner(System.in);
+		System.out.print("Enter the year : ");
+		int year = yearscanner.nextInt();
+		System.out.println("Enter month (1-12) :");
+		int month = monthscanner.nextInt();
+		System.out.println("Enter the day of the month (1-31) :");
+		int dayofmonth = dayofmonthscanner.nextInt();
+		int eq1 = dayofmonth;
+		double eq2 = ((26 * (month + 1))/10);
+		int eq3 = year % 100;
+		double eq4 = eq3 / 4;
+		double eq5 = (year / 100) / 4;
+		double eq6 = 5 * (year / 100);
+		int dayofweek = (eq1 + (int)eq2 + eq3 + (int)eq4 + (int)eq5 + (int)eq6) % 7;
+		String day = " ";
+		switch (dayofweek ) {
+		case 0: day = "Saturday"; break;
+		case 1: day = "Sunday"; break;
+		case 2: day = "Monday"; break;
+		case 3: day = "Tuesday"; break;
+		case 4: day = "Wednesday"; break;
+		case 5: day = "Thursday"; break;
+		case 6: day = "Friday"; break;
+		}
+		System.out.println("The day of the week is " + day + ".");
+	}
+}
