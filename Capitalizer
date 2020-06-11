@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class exercises {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter a phrase.");
+		String phrase = input.next();
+		System.out.println("Now enter all letters you would like to be capitalized, for \"hello\" i would write hll to get HeLLo.");
+		String letters = input.next();
+		int length = letters.length();
+		int count = 0;
+		int count2 = 0;
+		int count3 = phrase.length();
+		phrase = phrase.trim();
+		char letter = 'a';
+		while (count < count3 ) {
+			if (count < length) {
+			letter = letters.charAt(count);
+			}
+			String stringLetter = Character.toString(letter);
+			String upperStringLetter = stringLetter.toUpperCase();
+			char upperChar = upperStringLetter.charAt(0);
+			if (count2 < count3) {
+				if (phrase.charAt(count2) == letter) {
+					System.out.print(upperChar);
+					count2 += 1;
+					count += 1;
+				}
+				else {
+					System.out.print(phrase.charAt(count2));
+					count2 += 1;
+				}
+			}
+			
+		}
+	}
+}
