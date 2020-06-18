@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class exercises {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int num = (int)(Math.random() * 101);
+		System.out.println("The computer has generated a number between 1 and 100. Enter a guess");
+		int guess = 0;
+		while (guess != num) {
+			guess = input.nextInt();
+			if (guess == num) {
+				System.out.print("You guessed the number!");
+			}
+			else if (guess < num) {
+				System.out.println("The number is greater than your guess.");
+			}
+			else {
+				System.out.println("The number is less than your guess.");
+			}
+		}
+		
+	}
+}
