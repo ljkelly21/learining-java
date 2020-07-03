@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class exercises {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter a phrase :");
+		String phrase = input.next();
+		System.out.println("How many times would you like the phrase repeated?");
+		int timesRepeated = input.nextInt();
+		for(int i=timesRepeated; i>0; i--) {
+		System.out.println(phrase);
+		}
+	}
+}
