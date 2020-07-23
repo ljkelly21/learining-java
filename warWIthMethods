@@ -1,0 +1,145 @@
+import java.util.Scanner;
+
+public class exercises {
+
+	public static void main(String[] args) {
+		int rounds = rounds();
+		Scanner input2 = new Scanner(System.in);
+		int count = 0;
+		int scorePlayer = 0;
+		int scoreCpu = 0;
+		while (count < rounds) {
+		int[] randNumbers = randGenerator();
+		int cardNumber = randNumbers[0];
+		int suit = randNumbers[1];
+		int cardNumberCpu = randNumbers[2];
+		int suitCpu = randNumbers[3];
+		String[] cards = cards(cardNumber, suit, cardNumberCpu, suitCpu);
+		String card = cards[0];
+		String suitFinal = cards[1];
+		String cardcpu = cards[2];
+		String suitFinalcpu = cards[3];
+		roundCards(card, suitFinal, cardcpu, suitFinalcpu);
+		int[] results = roundResults(count, scorePlayer, scoreCpu, cardNumber, suit, cardNumberCpu, suitCpu);
+		count = results[0];
+		scorePlayer = results[1];
+		scoreCpu = results[2];
+		int next = input2.nextInt();
+		}
+		results(count, scorePlayer, scoreCpu, rounds);
+		
+	}
+	public static int rounds() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("War");
+		System.out.println("-----------------");
+		System.out.println("How many rounds would you like?");
+		int rounds = input.nextInt();
+		System.out.println("Press 1 and enter to start the next round.");
+		System.out.println("The order of suits in the event of a tie is spades > clubs > diamonds > hearts");
+		return rounds;
+	}
+	public static int[] randGenerator() {
+		int cardnumber = (int)(Math.random() * 14);
+		int suit = (int)(Math.random() * 4);
+		int cardnumbercpu = (int)(Math.random() * 14);
+		int suitcpu = (int)(Math.random() * 4);
+		int[] randNumbers = {cardnumber, suit, cardnumbercpu, suitcpu};
+		return randNumbers;
+	}
+	public static String[] cards(int cardNumber, int suit, int cardNumberCpu, int suitCpu) {
+		String cardcpu = " ";
+		String suitFinalcpu = " ";
+		String card = " ";
+		String suitFinal = " ";
+		switch (cardNumber) {
+		case 0: card = "Two"; break;
+		case 1: card = "Three"; break;
+		case 2: card = "Four"; break;
+		case 3: card = "Five"; break;
+		case 5: card = "Six"; break;
+		case 6: card = "Seven"; break;
+		case 7: card = "Eight"; break;
+		case 8: card = "Nine"; break;
+		case 9: card = "Ten"; break;
+		case 10: card = "Jack"; break;
+		case 11: card = "Queen"; break;
+		case 12: card = "King"; break;
+		case 13: card = "Ace"; break;
+		}
+		switch (suit) {
+		case 0: suitFinal = "Hearts"; break;
+		case 1: suitFinal = "Diamonds"; break;
+		case 2: suitFinal = "Clubs"; break;
+		case 3: suitFinal = "Spades"; break;
+		}
+		switch (cardNumberCpu) {
+		case 0: cardcpu = "Two"; break;
+		case 1: cardcpu = "Three"; break;
+		case 2: cardcpu = "Four"; break;
+		case 3: cardcpu = "Five"; break;
+		case 5: cardcpu = "Six"; break;
+		case 6: cardcpu = "Seven"; break;
+		case 7: cardcpu = "Eight"; break;
+		case 8: cardcpu = "Nine"; break;
+		case 9: cardcpu = "Ten"; break;
+		case 10: cardcpu = "Jack"; break;
+		case 11: cardcpu = "Queen"; break;
+		case 12: cardcpu = "King"; break;
+		case 13: cardcpu = "Ace"; break;
+		}
+		switch (suitCpu) {
+		case 0: suitFinalcpu = "Hearts"; break;
+		case 1: suitFinalcpu = "Diamonds"; break;
+		case 2: suitFinalcpu = "Clubs"; break;
+		case 3: suitFinalcpu = "Spades"; break;
+		}
+		String[] cards = {card, suitFinal, cardcpu, suitFinalcpu};
+		return cards;
+	}
+	public static void roundCards(String card, String suitFinal, String cardcpu, String suitFinalcpu) {
+		System.out.println("You pulled a " + card + "  of " + suitFinal + ".");
+		System.out.println("The CPU pulled a " + cardcpu + " of " + suitFinalcpu + ".");
+	}
+	public static int[] roundResults(int count, int scorePlayer, int scoreCpu, int cardNumber, int suit, int cardNumberCpu, int suitCpu) {
+		if (cardNumber > cardNumberCpu) {
+			System.out.println("You won the round!");
+			scorePlayer += 1;
+			count += 1;
+		}
+		else if (cardNumberCpu > cardNumber) {
+			System.out.println("You lost the round.");
+			scoreCpu += 1;
+			count += 1;
+		}
+		else if (cardNumber == cardNumberCpu) {
+			if (suit > suitCpu) {
+				System.out.println("You won the round!");
+				scorePlayer += 1;
+				count += 1;
+			}
+			else if (suitCpu > suit) {
+				System.out.println("You lost the round.");
+				scoreCpu += 1;
+				count  += 1;
+			}
+			else if (suit == suitCpu) {
+				System.out.println("You tied.  This round will not be counted.");
+			}
+		}
+		int[] results = {count, scorePlayer, scoreCpu};
+		return results;
+	}
+	public static void results(int count, int scorePlayer, int scoreCpu, int rounds) {
+		System.out.println("The game of " + rounds + " rounds is finished.");
+		if (scorePlayer > scoreCpu) {
+			System.out.print("You won, " + scorePlayer + " rounds to " + scoreCpu + " rounds.");
+		}
+		else if (scoreCpu > scorePlayer) {
+			System.out.println("You lost, " + scoreCpu + " rounds to " + scorePlayer + " rounds.");
+		}
+		else if (scoreCpu == scorePlayer) {
+			System.out.println("You tied, " + scorePlayer + "to" + scoreCpu + ".");
+		}
+	}
+}
