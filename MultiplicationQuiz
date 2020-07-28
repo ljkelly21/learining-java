@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class exercises {
+	public static void main(String[] args) {
+		class QuestionClass {
+			public int num1 = (int)(Math.random() * 10);
+			public int num2 = (int)(Math.random() * 10);
+			public int answer = num1 * num2;
+			public String question = num1 + " x " + (num2) + " =";
+		}
+		System.out.println("Multiplication Quiz");
+		int questions = questions();
+		int count = 0;
+		int score = 0;
+		while (count < questions) {	
+			QuestionClass obj = new QuestionClass();
+			System.out.println(obj.question);
+			boolean correct = answer(obj.answer);
+			score = result(correct, score);
+			count++;
+		}
+		System.out.println("You scored " + score + " out of a possible " + questions);
+	}
+	public static int questions() {
+		System.out.println("How many questions would you like?");
+		Scanner input = new Scanner(System.in);
+		int questions = input.nextInt();
+		return questions;
+	}
+	public static boolean answer(int answer) {
+		Scanner input = new Scanner(System.in);
+		int result = input.nextInt();
+		if (result == answer) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	public static int result(boolean correct, int score) {
+		if (correct == true) {
+			score ++;
+			System.out.println("Correct!");
+		}
+		else {
+			System.out.println("Incorrect.");
+		}
+		return score;
+	}
+	
+} 
